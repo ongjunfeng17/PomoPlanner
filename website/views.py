@@ -35,3 +35,12 @@ def delete_note():
             db.session.commit()
 
     return jsonify({})
+
+#timer page below
+
+@views.route('/timer', methods=['GET', 'POST'])
+@login_required
+def timer():
+    
+
+    return render_template("timer.html", user=current_user)
