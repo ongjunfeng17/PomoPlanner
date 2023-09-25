@@ -3,6 +3,8 @@ from flask_login import login_required, current_user
 from .models import Note
 from . import db
 import json
+from flask import url_for
+
 
 views = Blueprint('views', __name__)
 
@@ -44,3 +46,4 @@ def timer():
     
 
     return render_template("timer.html", user=current_user)
+
