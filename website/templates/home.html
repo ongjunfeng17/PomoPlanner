@@ -1,21 +1,78 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
 %}
-<h1 align="center">Notes</h1>
-<ul class="list-group list-group-flush" id="notes">
-  {% for note in user.notes %}
-  <li class="list-group-item">
-    {{ note.data }}
-    <button type="button" class="close" onClick="deleteNote({{ note.id }})">
-      <span aria-hidden="true">&times;</span>
+<div class="hidden">
+  <audio src="{{ url_for('static', filename='backtowork.mp3') }}" data-sound="pomodoro"></audio>
+  <audio src="{{ url_for('static', filename='break.mp3') }}" data-sound="shortBreak"></audio>
+  <audio src="{{ url_for('static', filename='break.mp3') }}" data-sound="longBreak"></audio>
+</div>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+<main class="app">
+
+  <progress id="js-progress" value="0"></progress>
+  <div class="progress-bar"></div>
+
+
+  <div class="timer">
+    <div class="button-group mode-buttons" id="js-mode-buttons">
+      <br />
+      <br />
+
+
+      <button data-mode="pomodoro" class="button active mode-button" id="js-pomodoro">
+        Pomodoro
+      </button>
+      <button data-mode="shortBreak" class="button mode-button" id="js-short-break">
+        Short break
+      </button>
+      <button data-mode="longBreak" class="button mode-button" id="js-long-break">
+        Long break
+      </button>
+    </div>
+    <div class="clock" id="js-clock">
+      <span id="js-minutes">25</span>
+      <span class="separator">:</span>
+      <span id="js-seconds">00</span>
+    </div>
+    <button class="main-button" data-action="start" id="js-btn">
+      Start
     </button>
-  </li>
-  {% endfor %}
-</ul>
-<form method="POST">
-  <textarea name="note" id="note" class="form-control"></textarea>
-  <br />
-  <div align="center">
-    <button type="submit" class="btn btn-primary">Add Note</button>
+    <br />
+    <br />
+    <br />
+
+    <!-- NOTES BELOW -->
+    <div class="box">
+      <!-- <h1 align="center" style="color: white;">Tasks</h1> -->
+      <form method="POST">
+        <div class="textarea-container">
+          <textarea name="note" id="note" class="form-control" style="text-indent: 10px;" placeholder="What would you like to work on?"></textarea>
+          <button type="submit" class="add-note-button">
+            <img src="https://png.pngtree.com/png-vector/20190511/ourmid/pngtree-vector-plus-icon-png-image_1030072.jpg"
+              alt="Add Note" />
+          </button>
+        </div>
+      </form>
+    </div>
+
+
+    <br />
+    <ul class="list-group list-group-flush" id="notes">
+      {% for note in user.notes %}
+      <li class="list-group-item d-flex justify-content-between align-items-center mb-2 rounded" id="note">
+        {{ note.data }}
+        <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </li>
+      {% endfor %}
+    </ul>
   </div>
-</form>
+
+
+
+</main>
+
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+
+
 {% endblock %}

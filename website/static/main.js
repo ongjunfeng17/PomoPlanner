@@ -124,6 +124,10 @@ const timer = {
       .forEach(e => e.classList.remove('active'));
     document.querySelector(`[data-mode="${mode}"]`).classList.add('active');
     document.body.style.backgroundColor = `var(--${mode})`;
+    const mainButton = document.querySelector('.main-button');
+    const addNoteButton = document.querySelector('.add-note-button');
+    mainButton.style.color = `var(--${mode})`;
+    addNoteButton.style.color = `var(--${mode})`;
     document
       .getElementById('js-progress')
       .setAttribute('max', timer.remainingTime.total);
@@ -158,3 +162,4 @@ const timer = {
   
     switchMode('pomodoro');
   });
+
