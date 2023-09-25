@@ -43,7 +43,7 @@
     <!-- NOTES BELOW -->
     <div class="box">
       <!-- <h1 align="center" style="color: white;">Tasks</h1> -->
-      <form method="POST">
+      <form method="POST" id="myForm">
         <div class="textarea-container">
           <textarea name="note" id="note" class="form-control" style="text-indent: 10px;" placeholder="What would you like to work on?"></textarea>
           <button type="submit" class="add-note-button">
@@ -54,6 +54,7 @@
       </form>
     </div>
 
+  
 
     <br />
     <ul class="list-group list-group-flush" id="notes">
@@ -73,6 +74,5 @@
 </main>
 
 <script src="{{ url_for('static', filename='main.js') }}"></script>
-
 
 {% endblock %}

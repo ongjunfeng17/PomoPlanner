@@ -163,3 +163,5 @@ const timer = {
     switchMode('pomodoro');
   });
 
+  
+ 
