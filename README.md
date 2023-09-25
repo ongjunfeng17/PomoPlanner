@@ -1,4 +1,6 @@
-# Flask Web App Tutorial
+# PomoPlanner
+
+PomoPlanner is a streamlined web application designed to boost your productivity by combining the classic Pomodoro technique with a dynamic to-do list.
 
 ## Setup & Installation
 
